@@ -7,27 +7,27 @@
 
     <fragment
         android:id="@+id/salesFragment"
-        android:name="com.joyapps.catatanku.SalesFragment"
+        android:name="com.joyapps.catatanku.fragments.SalesFragment"
         android:label="fragment_sales"
         tools:layout="@layout/fragment_sales" />
     <fragment
         android:id="@+id/goodsFragment"
-        android:name="com.joyapps.catatanku.GoodsFragment"
+        android:name="com.joyapps.catatanku.fragments.GoodsFragment"
         android:label="fragment_goods"
         tools:layout="@layout/fragment_goods" />
     <fragment
         android:id="@+id/statsFragment"
-        android:name="com.joyapps.catatanku.StatsFragment"
+        android:name="com.joyapps.catatanku.fragments.StatsFragment"
         android:label="fragment_stats"
         tools:layout="@layout/fragment_stats" />
     <fragment
         android:id="@+id/accountFragment"
-        android:name="com.joyapps.catatanku.AccountFragment"
+        android:name="com.joyapps.catatanku.fragments.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" />
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.joyapps.catatanku.loginFragment"
+        android:name="com.joyapps.catatanku.fragments.loginFragment"
         android:label="loginFragment"
         tools:layout="@layout/fragment_login">
         <action

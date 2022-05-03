@@ -1,19 +1,16 @@
-package com.joyapps.catatanku;
+package com.joyapps.catatanku.fragments;
 
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.Objects;
+import com.joyapps.catatanku.R;
 
-public class SalesFragment extends Fragment {
+public class AccountFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -21,12 +18,12 @@ public class SalesFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public SalesFragment() {
+    public AccountFragment() {
         // Required empty public constructor
     }
 
-    public static SalesFragment newInstance(String param1, String param2) {
-        SalesFragment fragment = new SalesFragment();
+    public static AccountFragment newInstance(String param1, String param2) {
+        AccountFragment fragment = new AccountFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -45,16 +42,6 @@ public class SalesFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_sales, container, false);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        BottomNavigationView bottomNavigationView = Objects.requireNonNull(getActivity()).findViewById(R.id.mainActivity_bottomNavView);
-        if (bottomNavigationView != null) {
-            bottomNavigationView.setVisibility(View.VISIBLE);
-        }
+        return inflater.inflate(R.layout.fragment_account, container, false);
     }
 }
