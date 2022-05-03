@@ -20,8 +20,8 @@ public class loginFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private String mParam1;
-    private String mParam2;
+    private Button btnLogin;
+    private Button btnSignUp;
 
     public loginFragment() {
         // Required empty public constructor
@@ -40,8 +40,8 @@ public class loginFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            String mParam1 = getArguments().getString(ARG_PARAM1);
+            String mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -53,13 +53,14 @@ public class loginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+         btnSignUp = view.findViewById(R.id.btnSignUp);
+         btnLogin = view.findViewById(R.id.btnLogin);
 
         this.handleBtnLogin(view);
         this.handleBtnSignUp(view);
     }
 
     private void handleBtnLogin(View view) {
-        Button btnLogin = view.findViewById(R.id.btnLogin);
         btnLogin.setOnClickListener(v -> {
             NavController navController = Navigation.findNavController(requireActivity().findViewById(R.id.mainActivity_navFragment));
             navController.navigate(R.id.action_loginFragment_to_salesFragment);
@@ -67,7 +68,6 @@ public class loginFragment extends Fragment {
     }
 
     private void handleBtnSignUp(View view) {
-        Button btnSignUp = view.findViewById(R.id.btnSignUp);
         btnSignUp.setOnClickListener(v -> {
             NavController navController = Navigation.findNavController(requireActivity().findViewById(R.id.mainActivity_navFragment));
             navController.navigate(R.id.action_loginFragment_to_signUpFragment);
