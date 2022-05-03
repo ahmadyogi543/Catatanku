@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.joyapps.catatanku.R;
+import com.joyapps.catatanku.database.AppDatabase;
 import com.joyapps.catatanku.database.User;
 import com.joyapps.catatanku.utils.MyUtils;
 
@@ -22,6 +24,7 @@ public class SignUpFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private AppDatabase appDB;
 
     private EditText txtFullName;
     private EditText txtUserName;
@@ -62,6 +65,8 @@ public class SignUpFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        appDB = AppDatabase.getInstance(getContext());
+
         txtFullName = view.findViewById(R.id.txtFullName);
         txtUserName = view.findViewById(R.id.txtUserName);
         txtPassword = view.findViewById(R.id.txtPassword);
@@ -88,6 +93,7 @@ public class SignUpFragment extends Fragment {
                 !storeName.isEmpty()) {
                 if (cbTOSAgree.isChecked()) {
                     User user = new User(userName, fullName, password, passwordHint, storeName);
+                    appDB.userDao().InsertOne(user);
                     Toast.makeText(getContext(),
                             "Akun berhasil didaftarkan!", Toast.LENGTH_LONG).show();
                 }

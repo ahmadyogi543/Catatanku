@@ -12,14 +12,24 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.joyapps.catatanku.R;
+import com.joyapps.catatanku.database.AppDatabase;
+import com.joyapps.catatanku.database.User;
+import com.joyapps.catatanku.utils.MyUtils;
+
+import java.util.List;
 
 public class loginFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private AppDatabase appDB;
 
+    private EditText txtUserName;
+    private EditText txtPassword;
     private Button btnLogin;
     private Button btnSignUp;
 
@@ -53,8 +63,11 @@ public class loginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-         btnSignUp = view.findViewById(R.id.btnSignUp);
-         btnLogin = view.findViewById(R.id.btnLogin);
+        appDB = AppDatabase.getInstance(getContext());
+        txtUserName = view.findViewById(R.id.txtUserName);
+        txtPassword = view.findViewById(R.id.txtPassword);
+        btnSignUp = view.findViewById(R.id.btnSignUp);
+        btnLogin = view.findViewById(R.id.btnLogin);
 
         this.handleBtnLogin(view);
         this.handleBtnSignUp(view);
@@ -62,8 +75,28 @@ public class loginFragment extends Fragment {
 
     private void handleBtnLogin(View view) {
         btnLogin.setOnClickListener(v -> {
-            NavController navController = Navigation.findNavController(requireActivity().findViewById(R.id.mainActivity_navFragment));
-            navController.navigate(R.id.action_loginFragment_to_salesFragment);
+            List<User> users = appDB.userDao().getAll();
+            String username = txtUserName.getText().toString();
+            String password = MyUtils.getHashedPassword(txtPassword.getText().toString());
+
+            if (!username.isEmpty() && !password.isEmpty()) {
+                if (username.equals(users.get(0).getUsername()) && password.equals(users.get(0).getPassword())) {
+                    // Toast.makeText(getContext(), "Berhasil login!", Toast.LENGTH_SHORT).show();
+                    NavController navController = Navigation.findNavController(requireActivity()
+                        .findViewById(R.id.mainActivity_navFragment));
+                    navController.navigate(R.id.action_loginFragment_to_salesFragment);
+                }
+                else {
+                    Toast.makeText(getContext(),
+                            "Nama pengguna atau kata sandi salah!", Toast.LENGTH_SHORT).show();
+                }
+            }
+            else {
+                Toast.makeText(getContext(),
+                        "Nama pengguna atau kata sandi masih kosong!", Toast.LENGTH_SHORT).show();
+            }
+
+
         });
     }
 
