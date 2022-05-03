@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.SignUpFragment"
+    android:background="@color/white"
+    android:layout_margin="12dp"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:id="@+id/signUpFragmentTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:layout_marginBottom="36dp">
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up_card_title"
+            android:textColor="@color/blue_500"
+            android:textSize="20sp"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up_card_desc"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:fontFamily="@font/plus_jakarta_sans_regular"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_below="@id/signUpFragmentTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        tools:ignore="UselessParent">
+
+        <!-- fullName -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_semi_bold"
+            android:text="Nama Lengkap" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtFullName"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="Masukan nama lengkap Anda..."
+            android:textSize="14sp"
+            android:layout_marginBottom="14dp"
+            android:inputType="text"/>
+
+        <!-- username -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_semi_bold"
+            android:text="Nama Pengguna"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtUserName"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="Masukan nama pengguna..."
+            android:textSize="14sp"
+            android:layout_marginBottom="14dp"
+            android:inputType="text"/>
+
+        <!-- password -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_semi_bold"
+            android:text="Kata Sandi"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtPassword"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="Masukan kata sandi..."
+            android:textSize="14sp"
+            android:layout_marginBottom="14dp"
+            android:inputType="textPassword"/>
+
+        <!-- password hint -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_semi_bold"
+            android:text="Hint Kata Sandi"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtPasswordHint"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:hint="Masukan hint kata sandi..."
+            android:textSize="14sp"
+            android:inputType="text"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+
+         <CheckBox
+            android:id="@+id/cbTOSAgree"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/checkbox_sk"
+            android:textSize="14sp"
+            android:textColor="?colorControlNormal"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="DAFTARKAN AKUN"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:textSize="12sp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAbout"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="@string/btn_about_title"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textSize="12sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

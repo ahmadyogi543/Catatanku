@@ -20,6 +20,7 @@
         <entry key="app/src/main/res/layout/fragment_goods.xml" value="0.21041666666666667" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_sales.xml" value="0.21041666666666667" />
+        <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_stats.xml" value="0.21041666666666667" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.20717948717948717" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2055" />

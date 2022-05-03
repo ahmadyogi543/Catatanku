@@ -18,12 +18,15 @@
     <string name="check_account_info">Edit Informasi Akun</string>
     <string name="btn_login_title">Masuk</string>
     <string name="btn_about_title">Tentang</string>
-    <string name="forget_password"><u>LUPA PASSWORD?</u></string>
+    <string name="forget_password"><u>LUPA KATA SANDI?</u></string>
     <string name="edit_text_username_hint">Masukan username Anda…</string>
     <string name="edit_text_password_hint">Masukan password Anda…</string>
     <string name="login_str">LOGIN</string>
     <string name="username_str">Username</string>
     <string name="password_str">Password</string>
+    <string name="sign_up_card_title">DAFTAR AKUN BARU</string>
+    <string name="sign_up_card_desc">ISI DATA-DATA BERIKUT DENGAN BENAR!</string>
+    <string name="checkbox_sk">setuju dengan <u>S&amp;K</u></string>
 
     <string-array name="day_options_array">
         <item>Hari ini</item>

@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".fragments.SalesFragment"
     android:background="@color/white"
-    android:layout_margin="12dp">
+    android:layout_margin="12dp"
+    tools:ignore="HardcodedText">
 
     <ImageView
         android:id="@+id/ic_login_bg"
@@ -29,31 +30,36 @@
         android:layout_alignParentEnd="true"
         tools:ignore="UselessParent">
 
+        <!-- username -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/plus_jakarta_sans_semi_bold"
-            android:text="@string/username_str"/>
+            android:text="Nama Pengguna"/>
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextUsername"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:hint="@string/edit_text_username_hint"
+            android:hint="Masukan nama pengguna Anda..."
             android:textSize="14sp"
+            android:inputType="text"
             android:layout_marginBottom="12dp" />
 
+        <!--password -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/plus_jakarta_sans_semi_bold"
-            android:text="@string/password_str"/>
+            android:text="Kata Sandi"/>
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:hint="@string/edit_text_password_hint"
+            android:hint="Masukan kata sandi Anda..."
             android:textSize="14sp"
+            android:inputType="textPassword"
             android:layout_marginBottom="36dp"/>
 
+        <!-- btnLogin -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
@@ -63,15 +69,17 @@
             style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
             android:textSize="12sp"/>
 
+        <!-- btnSignUp -->
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAbout"
+            android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="52dp"
-            android:text="@string/btn_about_title"
+            android:text="DAFTAR AKUN"
             android:fontFamily="@font/plus_jakarta_sans_bold"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
+        <!-- tvForgetPassword -->
         <TextView
             android:id="@+id/tvForgetPassword"
             android:layout_gravity="center"

@@ -55,6 +55,7 @@ public class loginFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         this.handleBtnLogin(view);
+        this.handleBtnSignUp(view);
     }
 
     private void handleBtnLogin(View view) {
@@ -62,6 +63,14 @@ public class loginFragment extends Fragment {
         btnLogin.setOnClickListener(v -> {
             NavController navController = Navigation.findNavController(requireActivity().findViewById(R.id.mainActivity_navFragment));
             navController.navigate(R.id.action_loginFragment_to_salesFragment);
+        });
+    }
+
+    private void handleBtnSignUp(View view) {
+        Button btnSignUp = view.findViewById(R.id.btnSignUp);
+        btnSignUp.setOnClickListener(v -> {
+            NavController navController = Navigation.findNavController(requireActivity().findViewById(R.id.mainActivity_navFragment));
+            navController.navigate(R.id.action_loginFragment_to_signUpFragment);
         });
     }
 }
