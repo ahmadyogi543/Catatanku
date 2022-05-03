@@ -27,10 +27,5 @@
     <string name="sign_up_card_title">DAFTAR AKUN BARU</string>
     <string name="sign_up_card_desc">ISI DATA-DATA BERIKUT DENGAN BENAR!</string>
     <string name="checkbox_sk">setuju dengan <u>S&amp;K</u></string>
-
-    <string-array name="day_options_array">
-        <item>Hari ini</item>
-        <item>Kemarin</item>
-        <item>Bulan ini</item>
-    </string-array>
+    <string name="DB_NAME">dbcatatanku</string>
 </resources>

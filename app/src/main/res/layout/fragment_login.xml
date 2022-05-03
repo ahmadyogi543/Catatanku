@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.SalesFragment"
     android:background="@color/white"
     android:layout_margin="12dp"
@@ -19,7 +19,7 @@
         android:contentDescription="@string/btn_login_title"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="24dp"/>
+        android:layout_marginBottom="32dp"/>
 
     <LinearLayout
         android:layout_below="@id/ic_login_bg"
@@ -31,33 +31,39 @@
         tools:ignore="UselessParent">
 
         <!-- username -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/plus_jakarta_sans_semi_bold"
-            android:text="Nama Pengguna"/>
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editTextUsername"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:hint="Masukan nama pengguna Anda..."
-            android:textSize="14sp"
-            android:inputType="text"
-            android:layout_marginBottom="12dp" />
+            android:layout_height="wrap_content"
+            android:hint="Nama pengguna"
+            android:layout_marginBottom="12dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtUserName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:textSize="14sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!--password -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/plus_jakarta_sans_semi_bold"
-            android:text="Kata Sandi"/>
-        <com.google.android.material.textfield.TextInputEditText
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:hint="Masukan kata sandi Anda..."
-            android:textSize="14sp"
-            android:inputType="textPassword"
-            android:layout_marginBottom="36dp"/>
+            android:layout_height="wrap_content"
+            android:hint="Kata sandi"
+            android:layout_marginBottom="36dp"
+            app:endIconMode="password_toggle"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:textSize="14sp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <!-- btnLogin -->
         <com.google.android.material.button.MaterialButton
