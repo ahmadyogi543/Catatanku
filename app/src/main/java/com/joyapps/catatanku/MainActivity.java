@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
@@ -22,8 +23,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setupBottomNavigationView() {
-        // menginisialisasi bottom navigation view
         NavController navController = Navigation.findNavController(findViewById(R.id.mainActivity_navFragment));
         NavigationUI.setupWithNavController(bottomNavigationView, navController);
     }
+
+//    public Fragment getForegroundFragment(){
+//        Fragment navHostFragment = getSupportFragmentManager().findFragmentById(R.id.mainActivity_navFragment);
+//        return navHostFragment == null ? null : navHostFragment.getChildFragmentManager().getFragments().get(0);
+//    }
+
+//    @Override
+//    public void onBackPressed() {
+//        Fragment currentFragment = getForegroundFragment();
+//        if (bottomNavigationView.getSelectedItemId() == R.id.salesFragment ||
+//                currentFragment.getClass() == loginFragment.class) {
+//            this.finishAffinity();
+//        } else {
+//            bottomNavigationView.setSelectedItemId(R.id.salesFragment);
+//        }
+//    }
 }

@@ -1,11 +1,12 @@
 package com.joyapps.catatanku.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -27,6 +28,8 @@ public class loginFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private AppDatabase appDB;
+    private SharedPreferences sharedPref;
+    private SharedPreferences.Editor editor;
 
     private EditText txtUserName;
     private EditText txtPassword;
@@ -63,17 +66,33 @@ public class loginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        // setup for database and sharedprefs
         appDB = AppDatabase.getInstance(getContext());
+        sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE);
+        editor = sharedPref.edit();
+
+        // get views
         txtUserName = view.findViewById(R.id.txtUserName);
         txtPassword = view.findViewById(R.id.txtPassword);
         btnSignUp = view.findViewById(R.id.btnSignUp);
         btnLogin = view.findViewById(R.id.btnLogin);
 
-        this.handleBtnLogin(view);
-        this.handleBtnSignUp(view);
+        // handle actions
+        this.handleBtnLogin();
+        this.handleBtnSignUp();
+        this.handleCheckLoginStatus(view);
     }
 
-    private void handleBtnLogin(View view) {
+    private void handleCheckLoginStatus(View view) {
+        boolean isLogin = sharedPref.getBoolean("isLogin", false);
+
+        if (isLogin) {
+            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_salesFragment);
+        }
+    }
+
+    private void handleBtnLogin() {
         btnLogin.setOnClickListener(v -> {
             List<User> users = appDB.userDao().getAll();
             String username = txtUserName.getText().toString();
@@ -81,10 +100,10 @@ public class loginFragment extends Fragment {
 
             if (!username.isEmpty() && !password.isEmpty()) {
                 if (username.equals(users.get(0).getUsername()) && password.equals(users.get(0).getPassword())) {
-                    // Toast.makeText(getContext(), "Berhasil login!", Toast.LENGTH_SHORT).show();
-                    NavController navController = Navigation.findNavController(requireActivity()
-                        .findViewById(R.id.mainActivity_navFragment));
-                    navController.navigate(R.id.action_loginFragment_to_salesFragment);
+                    editor.putBoolean("isLogin", true);
+                    editor.apply();
+
+                    Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_salesFragment);
                 }
                 else {
                     Toast.makeText(getContext(),
@@ -93,17 +112,12 @@ public class loginFragment extends Fragment {
             }
             else {
                 Toast.makeText(getContext(),
-                        "Nama pengguna atau kata sandi masih kosong!", Toast.LENGTH_SHORT).show();
+                        "Nama pengguna atau kata sandi kosong!", Toast.LENGTH_SHORT).show();
             }
-
-
         });
     }
 
-    private void handleBtnSignUp(View view) {
-        btnSignUp.setOnClickListener(v -> {
-            NavController navController = Navigation.findNavController(requireActivity().findViewById(R.id.mainActivity_navFragment));
-            navController.navigate(R.id.action_loginFragment_to_signUpFragment);
-        });
+    private void handleBtnSignUp() {
+        btnSignUp.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_signUpFragment));
     }
 }

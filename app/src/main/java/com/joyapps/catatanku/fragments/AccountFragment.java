@@ -1,12 +1,18 @@
 package com.joyapps.catatanku.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.joyapps.catatanku.R;
 
@@ -14,6 +20,10 @@ public class AccountFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    private SharedPreferences sharedPref;
+    private SharedPreferences.Editor editor;
+    Button btnLogout;
 
     public AccountFragment() {
         // Required empty public constructor
@@ -40,5 +50,24 @@ public class AccountFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_account, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE);
+        editor = sharedPref.edit();
+
+        btnLogout = view.findViewById(R.id.btnLogout);
+        this.handleBtnLogout();
+    }
+
+    private void handleBtnLogout() {
+        btnLogout.setOnClickListener(v -> {
+            editor.putBoolean("isLogin", false);
+            editor.apply();
+
+            Navigation.findNavController(v).navigate(R.id.action_accountFragment_to_loginFragment);
+        });
     }
 }
