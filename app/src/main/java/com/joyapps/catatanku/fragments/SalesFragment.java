@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.joyapps.catatanku.MainActivity;
 import com.joyapps.catatanku.R;
 
 import java.util.Objects;
