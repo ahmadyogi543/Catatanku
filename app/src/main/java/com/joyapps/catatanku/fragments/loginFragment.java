@@ -110,7 +110,9 @@ public class loginFragment extends Fragment {
 
                 if (userFound) {
                     editor.putBoolean("isLogin", true);
+                    editor.putString("loggedUsername", username);
                     editor.apply();
+
                     Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_salesFragment);
                 }
                 else {

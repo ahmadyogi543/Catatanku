@@ -13,16 +13,27 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.joyapps.catatanku.R;
+import com.joyapps.catatanku.database.AppDatabase;
+import com.joyapps.catatanku.database.User;
 
 public class AccountFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private AppDatabase appDB;
     private SharedPreferences sharedPref;
     private SharedPreferences.Editor editor;
+
+    TextView txtFullName;
+    TextView txtUserName;
+    TextView txtStoreName;
+    TextView txtPasswordHint;
+
+    Button btnEditInfo;
     Button btnLogout;
 
     public AccountFragment() {
@@ -55,10 +66,19 @@ public class AccountFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        appDB = AppDatabase.getInstance(getContext());
         sharedPref = requireActivity().getPreferences(Context.MODE_PRIVATE);
         editor = sharedPref.edit();
 
+        txtFullName = view.findViewById(R.id.txtFullName);
+        txtUserName = view.findViewById(R.id.txtUserName);
+        txtStoreName = view.findViewById(R.id.txtStoreName);
+        txtPasswordHint = view.findViewById(R.id.txtPasswordHint);
+
+        btnEditInfo = view.findViewById(R.id.btnEditInfo);
         btnLogout = view.findViewById(R.id.btnLogout);
+
+        this.handleUserInfo();
         this.handleBtnLogout();
     }
 
@@ -69,5 +89,15 @@ public class AccountFragment extends Fragment {
 
             Navigation.findNavController(v).navigate(R.id.action_accountFragment_to_loginFragment);
         });
+    }
+
+    private void handleUserInfo() {
+        String loggedUserName = sharedPref.getString("loggedUsername", "");
+
+        User loggedUser = appDB.userDao().findUser(loggedUserName);
+        txtFullName.setText(loggedUser.getFullName());
+        txtUserName.setText(loggedUser.getUsername());
+        txtStoreName.setText(loggedUser.getStoreName());
+        txtPasswordHint.setText(loggedUser.getPasswordHint());
     }
 }

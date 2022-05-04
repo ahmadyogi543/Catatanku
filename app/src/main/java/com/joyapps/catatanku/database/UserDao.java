@@ -13,7 +13,7 @@ public interface UserDao {
     @Query("SELECT * FROM user_table")
     List<User> getAll();
 
-    @Query("SELECT * FROM user_table WHERE username LIKE :uname LIMIT 1")
+    @Query("SELECT * FROM user_table WHERE username = :uname")
     User findUser(String uname);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
