@@ -28,19 +28,20 @@
         tools:ignore="UseCompoundDrawables">
 
         <ImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:layout_gravity="center"
-            android:src="@drawable/ic_sales"
-            android:tint="@color/grayish"
-            android:contentDescription="@string/no_transaction" />
+            android:src="@drawable/ic_sales_bg"
+            android:contentDescription="@string/no_goods" />
 
         <TextView
+            android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/no_transaction"
-            android:textColor="@color/grayish"
-            android:textSize="16sp" />
+            android:textColor="#ccc"
+            android:textSize="16sp"
+            android:fontFamily="@font/plus_jakarta_sans_medium"/>
 
     </LinearLayout>
 
