@@ -99,10 +99,18 @@ public class loginFragment extends Fragment {
             String password = MyUtils.getHashedPassword(txtPassword.getText().toString());
 
             if (!username.isEmpty() && !password.isEmpty()) {
-                if (username.equals(users.get(0).getUsername()) && password.equals(users.get(0).getPassword())) {
+                boolean userFound = false;
+
+                for (int i = 0; i < users.size(); i++) {
+                    if (username.equals(users.get(i).getUsername()) && password.equals(users.get(i).getPassword())) {
+                        userFound = true;
+                        break;
+                    }
+                }
+
+                if (userFound) {
                     editor.putBoolean("isLogin", true);
                     editor.apply();
-
                     Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_salesFragment);
                 }
                 else {

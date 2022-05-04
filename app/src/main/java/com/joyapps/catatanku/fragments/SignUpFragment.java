@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -95,7 +96,9 @@ public class SignUpFragment extends Fragment {
                     User user = new User(userName, fullName, password, passwordHint, storeName);
                     appDB.userDao().InsertOne(user);
                     Toast.makeText(getContext(),
-                            "Akun berhasil didaftarkan!", Toast.LENGTH_LONG).show();
+                            "Akun berhasil terdaftar, silahkan login!", Toast.LENGTH_LONG).show();
+
+                    Navigation.findNavController(v).navigate(R.id.action_signUpFragment_to_loginFragment);
                 }
                 else {
                     Toast.makeText(getContext(),
