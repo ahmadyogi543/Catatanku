@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 import com.joyapps.catatanku.R;
 import com.joyapps.catatanku.database.AppDatabase;
-import com.joyapps.catatanku.database.User;
+import com.joyapps.catatanku.models.UserModel;
 import com.joyapps.catatanku.utils.MyUtils;
 
 import java.util.List;
@@ -94,15 +94,15 @@ public class loginFragment extends Fragment {
 
     private void handleBtnLogin() {
         btnLogin.setOnClickListener(v -> {
-            List<User> users = appDB.userDao().getAll();
+            List<UserModel> userModels = appDB.userDao().getAll();
             String username = txtUserName.getText().toString();
             String password = MyUtils.getHashedPassword(txtPassword.getText().toString());
 
             if (!username.isEmpty() && !password.isEmpty()) {
                 boolean userFound = false;
 
-                for (int i = 0; i < users.size(); i++) {
-                    if (username.equals(users.get(i).getUsername()) && password.equals(users.get(i).getPassword())) {
+                for (int i = 0; i < userModels.size(); i++) {
+                    if (username.equals(userModels.get(i).getUsername()) && password.equals(userModels.get(i).getPassword())) {
                         userFound = true;
                         break;
                     }

@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import com.joyapps.catatanku.R;
 import com.joyapps.catatanku.database.AppDatabase;
-import com.joyapps.catatanku.database.User;
+import com.joyapps.catatanku.models.UserModel;
 
 public class AccountFragment extends Fragment {
 
@@ -94,10 +94,10 @@ public class AccountFragment extends Fragment {
     private void handleUserInfo() {
         String loggedUserName = sharedPref.getString("loggedUsername", "");
 
-        User loggedUser = appDB.userDao().findUser(loggedUserName);
-        txtFullName.setText(loggedUser.getFullName());
-        txtUserName.setText(loggedUser.getUsername());
-        txtStoreName.setText(loggedUser.getStoreName());
-        txtPasswordHint.setText(loggedUser.getPasswordHint());
+        UserModel loggedUserModel = appDB.userDao().findUser(loggedUserName);
+        txtFullName.setText(loggedUserModel.getFullName());
+        txtUserName.setText(loggedUserModel.getUsername());
+        txtStoreName.setText(loggedUserModel.getStoreName());
+        txtPasswordHint.setText(loggedUserModel.getPasswordHint());
     }
 }

@@ -6,23 +6,25 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
+import com.joyapps.catatanku.models.UserModel;
+
 import java.util.List;
 
 @Dao
 public interface UserDao {
     @Query("SELECT * FROM user_table")
-    List<User> getAll();
+    List<UserModel> getAll();
 
     @Query("SELECT * FROM user_table WHERE username = :uname")
-    User findUser(String uname);
+    UserModel findUser(String uname);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insertAll(User... users);
+    void insertAll(UserModel... userModels);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void InsertOne(User user);
+    void InsertOne(UserModel userModel);
 
     @Delete
-    void delete(User user);
+    void delete(UserModel userModel);
 }
 

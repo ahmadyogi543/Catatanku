@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 import com.joyapps.catatanku.R;
 import com.joyapps.catatanku.database.AppDatabase;
-import com.joyapps.catatanku.database.Good;
+import com.joyapps.catatanku.models.GoodModel;
 
 public class AddGoodsFragment extends Fragment {
 
@@ -92,14 +92,14 @@ public class AddGoodsFragment extends Fragment {
             }
 
             if (!goodName.isEmpty() && !goodPrice.isEmpty() && !goodQty.isEmpty()) {
-                Good good = new Good(
+                GoodModel goodModel = new GoodModel(
                         goodName,
                         Integer.parseInt(goodQty),
                         goodQuality,
                         Integer.parseInt(goodPrice)
                 );
 
-                appDB.goodDao().insertOne(good);
+                appDB.goodDao().insertOne(goodModel);
                 Toast.makeText(getContext(), "Barang berhasil ditambahkan!", Toast.LENGTH_LONG).show();
 
                 Navigation.findNavController(v).navigate(R.id.action_addGoodsFragment_to_goodsFragment);

@@ -10,17 +10,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.joyapps.catatanku.R;
-import com.joyapps.catatanku.database.Good;
 import com.joyapps.catatanku.models.GoodModel;
 
 import java.util.ArrayList;
 
 public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.ViewHolder> {
 
-    private final ArrayList<Good> goods;
+    private final ArrayList<GoodModel> goodModels;
 
-    public GoodAdapter(ArrayList<Good> goods) {
-        this.goods = goods;
+    public GoodAdapter(ArrayList<GoodModel> goodModels) {
+        this.goodModels = goodModels;
     }
 
     @NonNull
@@ -33,11 +32,11 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull GoodAdapter.ViewHolder holder, int position) {
-        String goodName = goods.get(position).getGoodName();
-        String goodQty = "Jumlah : " + goods.get(position).getGoodQty();
-        String goodQuality = "Kualitas : " + goods.get(position).getGoodQuality();
+        String goodName = goodModels.get(position).getGoodName();
+        String goodQty = "Jumlah : " + goodModels.get(position).getGoodQty();
+        String goodQuality = "Kualitas : " + goodModels.get(position).getGoodQuality();
         @SuppressLint("DefaultLocale")
-        String goodPrice = "Rp. " + String.format("%,d", goods.get(position).getGoodPrice());
+        String goodPrice = "Rp. " + String.format("%,d", goodModels.get(position).getGoodPrice());
 
         holder.txtGoodName.setText(goodName);
         holder.txtGoodQty.setText(goodQty);
@@ -47,7 +46,7 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return (goods == null) ? 0 : goods.size();
+        return (goodModels == null) ? 0 : goodModels.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

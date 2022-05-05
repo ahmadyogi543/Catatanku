@@ -1,4 +1,4 @@
-package com.joyapps.catatanku.database;
+package com.joyapps.catatanku.models;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "user_table")
-public class User {
+public class UserModel {
     @PrimaryKey
     @NonNull
     private String username;
@@ -22,7 +22,7 @@ public class User {
     @ColumnInfo(name = "store_name")
     private String storeName;
 
-    public User(@NonNull String username, String fullName, String password, String passwordHint, String storeName) {
+    public UserModel(@NonNull String username, String fullName, String password, String passwordHint, String storeName) {
         this.username = username;
         this.fullName = fullName;
         this.password = password;

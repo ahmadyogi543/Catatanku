@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
@@ -18,7 +17,7 @@ import android.widget.Toast;
 
 import com.joyapps.catatanku.R;
 import com.joyapps.catatanku.database.AppDatabase;
-import com.joyapps.catatanku.database.User;
+import com.joyapps.catatanku.models.UserModel;
 import com.joyapps.catatanku.utils.MyUtils;
 
 public class SignUpFragment extends Fragment {
@@ -93,8 +92,8 @@ public class SignUpFragment extends Fragment {
                 !password.isEmpty() && !passwordHint.isEmpty() &&
                 !storeName.isEmpty()) {
                 if (cbTOSAgree.isChecked()) {
-                    User user = new User(userName, fullName, password, passwordHint, storeName);
-                    appDB.userDao().InsertOne(user);
+                    UserModel userModel = new UserModel(userName, fullName, password, passwordHint, storeName);
+                    appDB.userDao().InsertOne(userModel);
                     Toast.makeText(getContext(),
                             "Akun berhasil terdaftar, silahkan login!", Toast.LENGTH_LONG).show();
 

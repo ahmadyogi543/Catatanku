@@ -1,10 +1,26 @@
 package com.joyapps.catatanku.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "good_table")
 public class GoodModel {
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "good_id")
     private int goodId;
+
+    @ColumnInfo(name = "good_name")
     private String goodName;
+
+    @ColumnInfo(name = "good_qty")
     private int goodQty;
+
+    @ColumnInfo(name = "good_quality")
     private String goodQuality;
+
+    @ColumnInfo(name = "good_price")
     private int goodPrice;
 
     public GoodModel(int goodId, String goodName, int goodQty, String goodQuality, int goodPrice) {
@@ -15,6 +31,7 @@ public class GoodModel {
         this.goodPrice = goodPrice;
     }
 
+    @Ignore
     public GoodModel(String goodName, int goodQty, String goodQuality, int goodPrice) {
         this.goodName = goodName;
         this.goodQty = goodQty;

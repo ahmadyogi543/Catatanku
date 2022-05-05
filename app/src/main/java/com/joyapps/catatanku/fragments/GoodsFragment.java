@@ -17,7 +17,7 @@ import android.widget.Button;
 import com.joyapps.catatanku.R;
 import com.joyapps.catatanku.adapters.GoodAdapter;
 import com.joyapps.catatanku.database.AppDatabase;
-import com.joyapps.catatanku.database.Good;
+import com.joyapps.catatanku.models.GoodModel;
 
 import java.util.ArrayList;
 
@@ -73,8 +73,8 @@ public class GoodsFragment extends Fragment {
     }
 
     private void setupGoodsData() {
-        ArrayList<Good> goods = new ArrayList<>(appDB.goodDao().getAll());
-        GoodAdapter goodAdapter = new GoodAdapter(goods);
+        ArrayList<GoodModel> goodModels = new ArrayList<>(appDB.goodDao().getAll());
+        GoodAdapter goodAdapter = new GoodAdapter(goodModels);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(goodAdapter);
