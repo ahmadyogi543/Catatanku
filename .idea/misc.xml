@@ -6,14 +6,17 @@
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2055" />
         <entry key="app/src/main/res/drawable/ic_account.xml" value="0.2055" />
         <entry key="app/src/main/res/drawable/ic_account_card_bg.xml" value="0.2175" />
+        <entry key="app/src/main/res/drawable/ic_add_goods_card_bg.xml" value="0.147" />
         <entry key="app/src/main/res/drawable/ic_goods.xml" value="0.2055" />
         <entry key="app/src/main/res/drawable/ic_goods_bg.xml" value="0.147" />
+        <entry key="app/src/main/res/drawable/ic_inventory.xml" value="0.147" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.187" />
         <entry key="app/src/main/res/drawable/ic_lock.xml" value="0.2115" />
         <entry key="app/src/main/res/drawable/ic_login_bg.xml" value="0.2115" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.187" />
         <entry key="app/src/main/res/drawable/ic_sales.xml" value="0.2055" />
         <entry key="app/src/main/res/drawable/ic_sales_bg.xml" value="0.147" />
+        <entry key="app/src/main/res/drawable/ic_search.xml" value="0.147" />
         <entry key="app/src/main/res/drawable/ic_stats.xml" value="0.2055" />
         <entry key="app/src/main/res/drawable/icon_card_background.xml" value="0.2055" />
         <entry key="app/src/main/res/font/plus_jakarta_sans.xml" value="0.240625" />
@@ -21,9 +24,10 @@
         <entry key="app/src/main/res/layout-v28/fragment_sales.xml" value="0.21041666666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21041666666666667" />
         <entry key="app/src/main/res/layout/fragment_account.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_add_goods.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_goods.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_sales.xml" value="0.21041666666666667" />
+        <entry key="app/src/main/res/layout/fragment_sales.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_stats.xml" value="0.21041666666666667" />
         <entry key="app/src/main/res/layout/rv_account_item.xml" value="0.25" />

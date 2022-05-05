@@ -7,7 +7,7 @@
     <item
         android:id="@+id/goodsFragment"
         android:title="@string/goods_title"
-        android:icon="@drawable/ic_goods"/>
+        android:icon="@drawable/ic_inventory"/>
     <item
         android:id="@+id/statsFragment"
         android:title="@string/stats_title"

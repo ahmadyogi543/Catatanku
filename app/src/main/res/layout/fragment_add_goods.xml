@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.AddGoodsFragment"
+    android:background="@color/white"
+    android:layout_margin="12dp"
+    tools:ignore="HardcodedText">
+
+    <LinearLayout
+        android:id="@+id/txtGroups"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            android:gravity="center"
+            android:text="TAMBAH BARANG"
+            android:textColor="@color/blue_500"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="12sp"
+            android:text="TAMBAHKAN BARANG JUALAN ANDA"
+            android:textColor="@color/black"
+            android:textSize="14sp"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/icAddGoodsBg"
+        android:layout_below="@id/txtGroups"
+        android:layout_width="108dp"
+        android:layout_height="108dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/ic_add_goods_card_bg"
+        android:contentDescription="astolfo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/icAddGoodsBg"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical">
+
+        <!-- Nama barang -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama barang"
+            android:layout_marginBottom="12dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/goodName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:textSize="14sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Harga barang -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Harga barang"
+            android:layout_marginBottom="12dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/goodPrice"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:textSize="14sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Jumlah barang -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Jumlah barang"
+            android:layout_marginBottom="12dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/goodQty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:textSize="14sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Kualitas -->
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kualitas"
+                android:textSize="14sp"
+                android:textColor="@color/black"/>
+
+            <RadioButton
+                android:id="@+id/rbNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Baru"
+                android:textSize="12sp"/>
+
+            <RadioButton
+                android:id="@+id/rbUsed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bekas"
+                android:textSize="12sp"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddGood"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="TAMBAHKAN BARANG"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
+            android:textSize="12sp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelAdd"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="BATALKAN"
+            android:fontFamily="@font/plus_jakarta_sans_bold"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:textSize="12sp"/>
+    </LinearLayout>
+</RelativeLayout>

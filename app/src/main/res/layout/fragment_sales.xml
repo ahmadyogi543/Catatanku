@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.SalesFragment"
     android:background="@color/white"
-    android:layout_margin="12dp">
+    android:layout_margin="12dp"
+    tools:ignore="HardcodedText">
 
     <TextView
+        android:id="@+id/salesTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -20,30 +22,58 @@
         android:textSize="20sp"
         android:fontFamily="@font/plus_jakarta_sans_bold"/>
 
-    <LinearLayout
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/btnAddTransaction"
+        android:layout_below="@id/salesTitle"
+        android:layout_marginTop="24dp"
         android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
         tools:ignore="UseCompoundDrawables">
 
-        <ImageView
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_sales_bg"
-            android:contentDescription="@string/no_goods" />
+        <!-- txtSearch -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:startIconDrawable="@drawable/ic_search"
+            android:hint="Cari transaksi"
+            android:layout_marginBottom="12dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
-        <TextView
-            android:layout_marginTop="8dp"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txtSearchGoods"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text"
+                android:textSize="14sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/no_transaction"
-            android:textColor="#ccc"
-            android:textSize="16sp"
-            android:fontFamily="@font/plus_jakarta_sans_medium"/>
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
 
-    </LinearLayout>
+            <ImageView
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_sales_bg"
+                android:contentDescription="@string/no_goods" />
+
+            <TextView
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_transaction"
+                android:textColor="#ccc"
+                android:textSize="16sp"
+                android:fontFamily="@font/plus_jakarta_sans_medium"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAddTransaction"

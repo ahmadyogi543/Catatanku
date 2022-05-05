@@ -14,17 +14,17 @@ import android.widget.Button;
 
 import com.joyapps.catatanku.R;
 
-public class GoodsFragment extends Fragment {
+public class AddGoodsFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    public GoodsFragment() {
+    public AddGoodsFragment() {
         // Required empty public constructor
     }
 
-    public static GoodsFragment newInstance(String param1, String param2) {
-        GoodsFragment fragment = new GoodsFragment();
+    public static AddGoodsFragment newInstance(String param1, String param2) {
+        AddGoodsFragment fragment = new AddGoodsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -43,14 +43,14 @@ public class GoodsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_goods, container, false);
+        return inflater.inflate(R.layout.fragment_add_goods, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button btnAddGood = view.findViewById(R.id.btnAddGood);
-        btnAddGood.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_goodsFragment_to_addGoodsFragment));
+        Button btnCancelAdd = view.findViewById(R.id.btnCancelAdd);
+        btnCancelAdd.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_addGoodsFragment_to_goodsFragment));
     }
 }
