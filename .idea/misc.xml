@@ -14,6 +14,7 @@
         <entry key="app/src/main/res/drawable/ic_lock.xml" value="0.2115" />
         <entry key="app/src/main/res/drawable/ic_login_bg.xml" value="0.2115" />
         <entry key="app/src/main/res/drawable/ic_person.xml" value="0.187" />
+        <entry key="app/src/main/res/drawable/ic_rv_goods_item.xml" value="0.14" />
         <entry key="app/src/main/res/drawable/ic_sales.xml" value="0.2055" />
         <entry key="app/src/main/res/drawable/ic_sales_bg.xml" value="0.147" />
         <entry key="app/src/main/res/drawable/ic_search.xml" value="0.147" />
@@ -31,6 +32,7 @@
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_stats.xml" value="0.21041666666666667" />
         <entry key="app/src/main/res/layout/rv_account_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/rv_goods_item.xml" value="0.33" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.20717948717948717" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2055" />
       </map>

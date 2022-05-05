@@ -63,7 +63,7 @@
             android:layout_marginBottom="12dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/goodName"
+                android:id="@+id/txtGoodName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="text"
@@ -78,10 +78,10 @@
             android:layout_marginBottom="12dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/goodPrice"
+                android:id="@+id/txtGoodPrice"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="text"
+                android:inputType="number"
                 android:textSize="14sp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,16 +93,16 @@
             android:layout_marginBottom="12dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/goodQty"
+                android:id="@+id/txtGoodQty"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="text"
+                android:inputType="number"
                 android:textSize="14sp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Kualitas -->
         <RadioGroup
-            android:id="@+id/radioGroup"
+            android:id="@+id/rgQuality"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 

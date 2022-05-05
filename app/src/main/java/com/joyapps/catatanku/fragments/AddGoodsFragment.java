@@ -11,13 +11,28 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.joyapps.catatanku.R;
+import com.joyapps.catatanku.database.AppDatabase;
+import com.joyapps.catatanku.database.Good;
 
 public class AddGoodsFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    AppDatabase appDB;
+
+    EditText txtGoodName;
+    EditText txtGoodPrice;
+    EditText txtGoodQty;
+    RadioGroup rgQuality;
+
+    Button btnAddGood;
+    Button btnCancelAdd;
 
     public AddGoodsFragment() {
         // Required empty public constructor
@@ -49,8 +64,53 @@ public class AddGoodsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        appDB = AppDatabase.getInstance(getContext());
 
-        Button btnCancelAdd = view.findViewById(R.id.btnCancelAdd);
+        txtGoodName = view.findViewById(R.id.txtGoodName);
+        txtGoodPrice = view.findViewById(R.id.txtGoodPrice);
+        txtGoodQty = view.findViewById(R.id.txtGoodQty);
+        rgQuality = view.findViewById(R.id.rgQuality);
+
+        btnAddGood = view.findViewById(R.id.btnAddGood);
+        btnCancelAdd = view.findViewById(R.id.btnCancelAdd);
+
+        this.handleBtnAddGood();
+        this.handleBtnCancelAdd();
+    }
+
+    private void handleBtnAddGood() {
+        btnAddGood.setOnClickListener(v -> {
+            String goodName = txtGoodName.getText().toString();
+            String goodPrice = txtGoodPrice.getText().toString();
+            String goodQty = txtGoodQty.getText().toString();
+            String goodQuality;
+
+            if (rgQuality.getCheckedRadioButtonId() == R.id.rbUsed) {
+                goodQuality = "Bekas";
+            } else {
+                goodQuality = "Baru";
+            }
+
+            if (!goodName.isEmpty() && !goodPrice.isEmpty() && !goodQty.isEmpty()) {
+                Good good = new Good(
+                        goodName,
+                        Integer.parseInt(goodQty),
+                        goodQuality,
+                        Integer.parseInt(goodPrice)
+                );
+
+                appDB.goodDao().insertOne(good);
+                Toast.makeText(getContext(), "Barang berhasil ditambahkan!", Toast.LENGTH_LONG).show();
+
+                Navigation.findNavController(v).navigate(R.id.action_addGoodsFragment_to_goodsFragment);
+            }
+            else {
+                Toast.makeText(getContext(), "Isikan semua data yang diperlukan!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void handleBtnCancelAdd() {
         btnCancelAdd.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_addGoodsFragment_to_goodsFragment));
     }
 }
