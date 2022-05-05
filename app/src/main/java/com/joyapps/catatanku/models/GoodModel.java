@@ -1,0 +1,64 @@
+package com.joyapps.catatanku.models;
+
+public class GoodModel {
+    private int goodId;
+    private String goodName;
+    private int goodQty;
+    private String goodQuality;
+    private int goodPrice;
+
+    public GoodModel(int goodId, String goodName, int goodQty, String goodQuality, int goodPrice) {
+        this.goodId = goodId;
+        this.goodName = goodName;
+        this.goodQty = goodQty;
+        this.goodQuality = goodQuality;
+        this.goodPrice = goodPrice;
+    }
+
+    public GoodModel(String goodName, int goodQty, String goodQuality, int goodPrice) {
+        this.goodName = goodName;
+        this.goodQty = goodQty;
+        this.goodQuality = goodQuality;
+        this.goodPrice = goodPrice;
+    }
+
+    public int getGoodId() {
+        return goodId;
+    }
+
+    public void setGoodId(int goodId) {
+        this.goodId = goodId;
+    }
+
+    public String getGoodName() {
+        return goodName;
+    }
+
+    public void setGoodName(String goodName) {
+        this.goodName = goodName;
+    }
+
+    public int getGoodQty() {
+        return goodQty;
+    }
+
+    public void setGoodQty(int goodQty) {
+        this.goodQty = goodQty;
+    }
+
+    public String getGoodQuality() {
+        return goodQuality;
+    }
+
+    public void setGoodQuality(String goodQuality) {
+        this.goodQuality = goodQuality;
+    }
+
+    public int getGoodPrice() {
+        return goodPrice;
+    }
+
+    public void setGoodPrice(int goodPrice) {
+        this.goodPrice = goodPrice;
+    }
+}

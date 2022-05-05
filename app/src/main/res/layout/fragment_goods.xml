@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.SalesFragment"
     android:background="@color/white"
-    android:layout_margin="12dp"
+    android:layout_marginTop="12dp"
     tools:ignore="HardcodedText">
 
     <TextView
@@ -16,6 +16,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
         android:gravity="center"
         android:text="@string/goods_card_title"
         android:textColor="@color/blue_500"
@@ -33,11 +35,15 @@
 
         <!-- txtSearch -->
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtSearchGoodsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:startIconDrawable="@drawable/ic_search"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
             android:hint="Cari barang"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="0dp"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -47,29 +53,14 @@
                 android:inputType="text"
                 android:textSize="14sp"/>
         </com.google.android.material.textfield.TextInputLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:orientation="vertical"
-            tools:ignore="UselessParent">
 
-            <ImageView
-                android:layout_width="140dp"
-                android:layout_height="140dp"
-                android:layout_gravity="center"
-                android:contentDescription="@string/no_goods"
-                android:src="@drawable/ic_goods_bg" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvGoods"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/txtSearchGoodsLayout"
+            android:layout_centerInParent="true"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/plus_jakarta_sans_medium"
-                android:text="@string/no_goods"
-                android:textColor="#ccc"
-                android:textSize="16sp" />
-        </LinearLayout>
     </RelativeLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -79,6 +70,8 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
         android:text="@string/add_goods"
         android:fontFamily="@font/plus_jakarta_sans_bold"
         style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
