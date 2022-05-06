@@ -22,4 +22,7 @@ public interface GoodDao {
 
     @Query("DELETE FROM good_table WHERE good_name = :goodName")
     void deleteByName(String goodName);
+
+    @Query("SELECT * FROM good_table WHERE good_name LIKE '%'||:name||'%'")
+    List<GoodModel> searchByName(String name);
 }
