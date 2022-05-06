@@ -25,8 +25,6 @@ import java.util.List;
 
 public class loginFragment extends Fragment {
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
     private AppDatabase appDB;
     private SharedPreferences sharedPref;
     private SharedPreferences.Editor editor;
@@ -40,26 +38,9 @@ public class loginFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static loginFragment newInstance(String param1, String param2) {
-        loginFragment fragment = new loginFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            String mParam1 = getArguments().getString(ARG_PARAM1);
-            String mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_login, container, false);
     }
 
@@ -102,7 +83,8 @@ public class loginFragment extends Fragment {
                 boolean userFound = false;
 
                 for (int i = 0; i < userModels.size(); i++) {
-                    if (username.equals(userModels.get(i).getUsername()) && password.equals(userModels.get(i).getPassword())) {
+                    if (username.equals(userModels.get(i).getUsername()) &&
+                            password.equals(userModels.get(i).getPassword())) {
                         userFound = true;
                         break;
                     }
@@ -113,7 +95,8 @@ public class loginFragment extends Fragment {
                     editor.putString("loggedUsername", username);
                     editor.apply();
 
-                    Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_salesFragment);
+                    Navigation.findNavController(v)
+                            .navigate(R.id.action_loginFragment_to_salesFragment);
                 }
                 else {
                     Toast.makeText(getContext(),
@@ -128,6 +111,7 @@ public class loginFragment extends Fragment {
     }
 
     private void handleBtnSignUp() {
-        btnSignUp.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_signUpFragment));
+        btnSignUp.setOnClickListener(v -> Navigation.findNavController(v)
+                .navigate(R.id.action_loginFragment_to_signUpFragment));
     }
 }

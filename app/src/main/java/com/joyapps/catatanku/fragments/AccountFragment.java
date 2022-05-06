@@ -21,9 +21,6 @@ import com.joyapps.catatanku.models.UserModel;
 
 public class AccountFragment extends Fragment {
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
     private AppDatabase appDB;
     private SharedPreferences sharedPref;
     private SharedPreferences.Editor editor;
@@ -38,24 +35,6 @@ public class AccountFragment extends Fragment {
 
     public AccountFragment() {
         // Required empty public constructor
-    }
-
-    public static AccountFragment newInstance(String param1, String param2) {
-        AccountFragment fragment = new AccountFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            String mParam1 = getArguments().getString(ARG_PARAM1);
-            String mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override

@@ -58,8 +58,9 @@
             android:id="@+id/rvGoods"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scrollbars="vertical"
             android:layout_below="@id/txtSearchGoodsLayout"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true" />
 
     </RelativeLayout>
 

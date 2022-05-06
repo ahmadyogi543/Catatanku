@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             if (destination.getId() == R.id.loginFragment ||
             destination.getId() == R.id.signUpFragment ||
-            destination.getId() == R.id.addGoodsFragment) {
+            destination.getId() == R.id.addGoodsFragment ||
+            destination.getId() == R.id.splashScreenFragment) {
                 bottomNavigationView.setVisibility(View.GONE);
             }
             else {
@@ -38,19 +39,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-//    public Fragment getForegroundFragment(){
-//        Fragment navHostFragment = getSupportFragmentManager().findFragmentById(R.id.mainActivity_navFragment);
-//        return navHostFragment == null ? null : navHostFragment.getChildFragmentManager().getFragments().get(0);
-//    }
-
-//    @Override
-//    public void onBackPressed() {
-//        Fragment currentFragment = getForegroundFragment();
-//        if (bottomNavigationView.getSelectedItemId() == R.id.salesFragment ||
-//                currentFragment.getClass() == loginFragment.class) {
-//            this.finishAffinity();
-//        } else {
-//            bottomNavigationView.setSelectedItemId(R.id.salesFragment);
-//        }
-//    }
 }
