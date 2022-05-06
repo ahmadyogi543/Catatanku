@@ -1,6 +1,5 @@
 package com.joyapps.catatanku.fragments;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.joyapps.catatanku.R;
 import com.joyapps.catatanku.adapters.GoodAdapter;
@@ -24,33 +24,13 @@ import java.util.ArrayList;
 
 public class GoodsFragment extends Fragment {
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
     private AppDatabase appDB;
     RecyclerView recyclerView;
+    LinearLayout iconNoGoods;
     Button btnAddGood;
 
     public GoodsFragment() {
         // Required empty public constructor
-    }
-
-    public static GoodsFragment newInstance(String param1, String param2) {
-        GoodsFragment fragment = new GoodsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            String mParam1 = getArguments().getString(ARG_PARAM1);
-            String mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -62,6 +42,8 @@ public class GoodsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         appDB = AppDatabase.getInstance(getContext());
+
+        iconNoGoods = view.findViewById(R.id.iconNoGoods);
         recyclerView = view.findViewById(R.id.rvGoods);
         btnAddGood = view.findViewById(R.id.btnAddGood);
 
@@ -70,12 +52,19 @@ public class GoodsFragment extends Fragment {
     }
 
     private void handleBtnAddGood() {
-        btnAddGood.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_goodsFragment_to_addGoodsFragment));
+        btnAddGood.setOnClickListener(v -> Navigation.findNavController(v)
+                .navigate(R.id.action_goodsFragment_to_addGoodsFragment));
     }
 
     private void setupGoodsData() {
         ArrayList<GoodModel> goodModels = new ArrayList<>(appDB.goodDao().getAll());
-        GoodAdapter goodAdapter = new GoodAdapter(goodModels);
+
+        if (goodModels.size() != 0) {
+            iconNoGoods.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
+        }
+
+        GoodAdapter goodAdapter = new GoodAdapter(iconNoGoods, recyclerView, goodModels);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(goodAdapter);

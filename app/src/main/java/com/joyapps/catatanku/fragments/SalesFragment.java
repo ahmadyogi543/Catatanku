@@ -9,13 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.joyapps.catatanku.MainActivity;
 import com.joyapps.catatanku.R;
-
-import java.util.Objects;
 
 public class SalesFragment extends Fragment {
 

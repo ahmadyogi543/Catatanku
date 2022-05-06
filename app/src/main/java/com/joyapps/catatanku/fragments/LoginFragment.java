@@ -23,7 +23,7 @@ import com.joyapps.catatanku.utils.MyUtils;
 
 import java.util.List;
 
-public class loginFragment extends Fragment {
+public class LoginFragment extends Fragment {
 
     private AppDatabase appDB;
     private SharedPreferences sharedPref;
@@ -34,7 +34,7 @@ public class loginFragment extends Fragment {
     private Button btnLogin;
     private Button btnSignUp;
 
-    public loginFragment() {
+    public LoginFragment() {
         // Required empty public constructor
     }
 

@@ -41,7 +41,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.joyapps.catatanku.fragments.loginFragment"
+        android:name="com.joyapps.catatanku.fragments.LoginFragment"
         android:label="loginFragment"
         tools:layout="@layout/fragment_login">
         <action

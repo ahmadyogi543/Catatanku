@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,14 +16,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.joyapps.catatanku.R;
+import com.joyapps.catatanku.database.AppDatabase;
 import com.joyapps.catatanku.models.GoodModel;
 
 import java.util.ArrayList;
 
 public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.ViewHolder> {
+    AppDatabase appDB;
     private final ArrayList<GoodModel> goodModels;
 
-    public GoodAdapter(ArrayList<GoodModel> goodModels) {
+    LinearLayout linearLayout;
+    RecyclerView recyclerView;
+
+    public GoodAdapter(
+            LinearLayout linearLayout,
+            RecyclerView recyclerView,
+            ArrayList<GoodModel> goodModels) {
+        this.linearLayout = linearLayout;
+        this.recyclerView = recyclerView;
         this.goodModels = goodModels;
     }
 
@@ -36,6 +47,7 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull GoodAdapter.ViewHolder holder, int position) {
+        appDB = AppDatabase.getInstance(holder.itemView.getContext());
         String goodName = goodModels.get(position).getGoodName();
         String goodQty = "Jumlah : " + goodModels.get(position).getGoodQty();
         String goodQuality = "Kualitas : " + goodModels.get(position).getGoodQuality();
@@ -47,15 +59,24 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.ViewHolder> {
         holder.txtGoodQuality.setText(goodQuality);
         holder.txtGoodPrice.setText(goodPrice);
 
+        this.handleItemOnLongClick(holder, position, goodName);
+    }
+
+    private void handleItemOnLongClick(GoodAdapter.ViewHolder holder, int position, String goodName) {
         holder.itemView.setOnLongClickListener(v -> {
             AlertDialog alertDialog = new AlertDialog.Builder(v.getContext())
-                    .setTitle("Penghapusan Barang")
-                    .setMessage("Hapus barang ini?")
-                    .setPositiveButton("HAPUS", ((dialogInterface, i) -> {
-                        this.removeItemAt(position);
-                        Toast.makeText(v.getContext(), "Barang berhasil dihapus!", Toast.LENGTH_SHORT).show();
-                    }))
-                    .setNegativeButton("BATAL", ((dialogInterface, i) -> dialogInterface.dismiss())).create();
+                .setTitle("PERINGATAN")
+                .setMessage("Hapus barang ini?")
+                .setPositiveButton("HAPUS", ((dialogInterface, i) -> {
+                    appDB.goodDao().deleteByName(goodName);
+                    this.removeItemAt(position);
+
+                    Toast.makeText(v.getContext(),
+                            "Barang berhasil dihapus!", Toast.LENGTH_SHORT).show();
+                }))
+                .setNegativeButton("BATAL",
+                        ((dialogInterface, i) -> dialogInterface.dismiss())).create();
+
             alertDialog.setOnShowListener(dialogInterface -> {
                 Button button = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
                 button.setTypeface(Typeface.DEFAULT, Typeface.BOLD);
@@ -69,10 +90,15 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.ViewHolder> {
         });
     }
 
-    public void removeItemAt(int position) {
+    private void removeItemAt(int position) {
         goodModels.remove(position);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, goodModels.size());
+
+        if (goodModels.size() == 0) {
+            recyclerView.setVisibility(View.GONE);
+            linearLayout.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
